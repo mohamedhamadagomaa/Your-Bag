@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { CartIcon } from "../icons";
+import { CartIcon, Cart } from "../icons";
 const Navbar = () => {
-    // destructured method 
-  const {amount}  = useSelector((store) => store.cart);
+  // destructured method
+  const { amount } = useSelector((store) => store.cart);
   return (
     <nav>
       <div className="nav-center">
-        <h3>Redux Toolkit</h3>
+        <h1>
+          <Cart />
+        </h1>
         <div className="nav-container">
           <CartIcon />
           <div className="amount-container">

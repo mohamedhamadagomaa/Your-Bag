@@ -624,6 +624,7 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
+  // this is will not work
   extraReducers: {
     [getCartItems.pending]: (state) => {
       state.isLoading = true;
@@ -639,6 +640,22 @@ const cartSlice = createSlice({
   },
 });
 ```
+
+important.............
+
+upgrade in latest version of redux toolkit noi longer support object form but support callback form
+instead we need to use builder callback form
+extraReducers:(builder) =>{
+builder.addCase(getCartItems.pending,(state) =>{
+state.isLoading = true;
+}).addCase(getCartItems.fulfilled,(state,action) =>{
+state.isLoading = false;
+state.cartItems = action.payload;
+}).addCase(getCartItems.rejected,(state,action) =>{
+console.log(action);
+state.isLoading = false;
+});
+},
 
 - App.js
 
